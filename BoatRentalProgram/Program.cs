@@ -45,12 +45,14 @@ namespace BoatRentalProgram
 
             var response = query.ToList();
 
-            response.ForEach(i => Console.Write("{0}\t", i));
+            Console.Write("Output:\n");
+            response.ForEach(i => Console.Write("{0} = {1},\n", i.size, i.count));
+            Console.Write("Cost = {0} $\n", response.Sum(a => a.cost));
         }
 
         public static List<Boat> CalculationBoat(int number, ref List<Boat> result)
         {
-
+            result = new List<Boat>();
             while (number > 0)
             {
                 Boat findMostCost = boats.OrderByDescending(o => o.costPerSeat)
